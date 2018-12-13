@@ -16,7 +16,7 @@ populateDateColumns <- function(rawData){  # rawData is a vector of dates
   colnames(DateFrame) <- c('Date')  
   DateFrame$Date <- rawData
   dateTime <- as.POSIXlt(rawData)
-  DateFrame$Julian <- as.numeric(julian(dateTime,origin=as.Date("1850-01-01")))
+  DateFrame$Julian <- round(as.numeric(julian(dateTime,origin=as.Date("1850-01-01"))))
   DateFrame$Month <- dateTime$mon + 1
   DateFrame$Day <- dateTime$yday + 1
   year <- dateTime$year + 1900
